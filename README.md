@@ -13,18 +13,45 @@ http://api-juices.shelfmatch.com/session
 4. Пример запроса:
 5. Пример удачного ответа:
 
-### Для получения спиcка торговых точек в системе отправьте GET-запрос с на URL:
+### Для получения спиcка торговых точек в системе отправьте GET-запрос на URL:
 
+http://api-juices.shelfmatch.com/tradepoints
+
+## Описание запроса:
+1. GET запрос: /tradepoints?sessionId=\<session id\>  
+2. Параметр запроса в строке URL: **session id** – идентификатор сессии  
+3. Пример URL запроса:  
+http://api-juices.shelfmatch.com/tradepoints?sessionId=6bfb962c-d67b-4dc2-9468-8be11559134f   
+4. Тело ответа:  
+- **tradePoints** - торговые точки, набор результатов:  
+    - **city** - населенный пункт;  
+    - **address** - адрес;  
+    - **id** - идентификационный номер;  
+    - **country** - страна;  
+- **status** - статус сессии;    
+
+5. Пример удачного ответа:  
+```
+{
+"tradePoints": [ {
+    "city":null,
+    "address":"trade point 1",
+    "id":"01",
+    "country":null
+}],
+"status":"ok"
+}
+```
 ### Для получения ответа по идентификатору сессии необходимо отправить GET-запрос на URL:  
 http://api-juices.shelfmatch.com/session
 
 ## Описание запроса:
 1. GET запрос: /session?sessionId=\<session id\>
-2. Параметр запроса в строке URL: session id – идентификатор сессии
+2. Параметр запроса в строке URL: **session id** – идентификатор сессии
 3. Пример URL запроса:  
 http://api-juices.shelfmatch.com/session?sessionId=6bfb962c-d67b-4dc2-9468-8be11559134f  
 4. Тело ответа:  
-**session** - ответ по запросу:  
+- **session** - ответ по запросу:  
     - **processed** - сессия обработана (1) или нет (0);  
     - **totalImagePath** - полное изображение для распознавания;  
     - **foundObjects** - набор результатов:  
@@ -46,14 +73,15 @@ http://api-juices.shelfmatch.com/session?sessionId=6bfb962c-d67b-4dc2-9468-8be11
     - **detectionTime** - время распознавания;  
     - **id(path)** - идентификационный номер параметра path;  
     - **path** - область в imageParts;  
-**status** - статус сессии.  
+- **status** - статус сессии.  
    
 5. Пример удачного ответа:  
-```{  
+```
+{  
 "session": {  
     "processed":1,  
     "totalImagePath":"/6bfb962c-d67b-4dc2-9468-8be11559134f/full_image.jpg",  
-    "foundObjects": [ {  
+    "foundObjects": [{  
         "width":79,  
         "height":244,  
         "x":1323,  
