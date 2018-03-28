@@ -5,9 +5,12 @@ http://api-juices.shelfmatch.com/session
 
 ## Описание запроса:
 1. POST запрос: /session
-2. Заголовки\:
+2. Заголовки:
+
 2.1. Accept: application/json;charset=UTF-8
+
 2.2. Content-Type: application/json
+
 3. Тело запроса:
 4. Пример запроса:
 5. Пример удачного ответа:
