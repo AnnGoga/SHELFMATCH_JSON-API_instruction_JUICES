@@ -9,9 +9,30 @@ http://api-juices.shelfmatch.com/session
 2.1. Accept: application/json;charset=UTF-8  
 2.2. Content-Type: application/json  
 
-3. Тело запроса:
-4. Пример запроса:
+3. Тело запроса:  
+*(все поля обязательны для заполнения)*    
+**tradePointId** - идентификационный номер торговой точки*     
+**verticalLayout** - склейка нескольких картинок по вертикали (true) или горизонтали (false);  
+**fullName** - полное имя мерчендайзера;  
+**email** - электронная почта мерчендайзера;  
+**images** - массив изображений в формате base64.
+
+\* для теста заведена 1 торговая точка "tradePointId" : "01".  
+На данный момент в системе изначально заводится база торговых точек. Каждое изображение, поступающее в систему на анализ, должно быть обязательно привязано к одной ТТ из базы. При этом получить список ТТ из системы ShelfMatch можно, используя следующий метод.  
+
+4. Пример запроса:  
+**URL** : http://api-juices.shelfmatch.com/session  
+**Тело запроса** : {"tradePointId":"1","verticalLayout":"true","fullName": "Eduard Lebedev", "email": "Eduard.Lebedev@KUZNECH.com","images":["/9j/4AAQ...<весь base64>...sz//2Q=="]}  
+**Заголовки**:   
+Accept: application/json;charset=UTF-8     
+Content-Type: application/json  
 5. Пример удачного ответа:
+```
+{
+"sessionId": "6bfb962c-d67b-4dc2-9468-8be11559134f",
+"status": "ok"
+}
+```
 
 ### Для получения спиcка торговых точек в системе отправьте GET-запрос на URL:
 
